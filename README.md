@@ -24,10 +24,12 @@ The `cURL` command is required for the script to function as it's used to submit
 
 ### JQ
 
-It is recommended that you also install the `JQ` package as the script uses it to automatically format the JSON output into a human-readable and colorized output. There is a variable at the beginning of the script to set the use of the `JQ` command to true or false. I've personally encountered some issues with it when using the script within a cronjob and not using `JQ` to format the output resolves them. It is set to `true` by default.
+The `jq` command is required for the script to function as it is used to more easily extract data from JSON files created by the script when gathering information for the monitoring providers and the corresponding checks/tests.
+
+It is also used by the script to automatically format the JSON output into a human-readable and colorized output. There is a variable at the beginning of the script to set the use of the `jq` command (strictly for displaying the output of the script) to true or false. I've personally encountered some issues with it when using the script within a cronjob and not using `jq` to format the output resolves them. It is set to `true` by default.
 
 ```bash
-# Set JQ to false to disable the use of the JQ command.
+# Set JQ to false to disable its use for displaying output.
 # This works better for using the script with cronjobs, etc.
 jq='true'
 ```

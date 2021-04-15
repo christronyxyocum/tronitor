@@ -27,8 +27,8 @@ healthchecksDomain='healthchecks.io'
 webhookUrl=''
 # Set notifyAll to true for notification to apply for all running state as well.
 notifyAll='false'
-# Set JQ to false to disable the use of the JQ command. This works better for
-# using the script with cronjobs, etc.
+# Set JQ to false to disable its use for displaying output. This works better
+# for using the script with cronjobs, etc.
 jq='true'
 
 # Declare some variables.
