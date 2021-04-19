@@ -27,8 +27,8 @@ healthchecksDomain='healthchecks.io'
 webhookUrl=''
 # Set notifyAll to true for notification to apply for all running state as well.
 notifyAll='false'
-# Set JQ to false to disable the use of the JQ command. This works better for
-# using the script with cronjobs, etc.
+# Set JQ to false to disable its use for displaying output. This works better
+# for using the script with cronjobs, etc.
 jq='true'
 
 # Declare some variables.
@@ -1325,9 +1325,9 @@ create_monitor() {
 
     if [[ ${providerName} == 'uptimerobot' ]]; then
         if [[ ${jq} == 'true' ]]; then
-            curl -s -X POST -H "Content-Type: application/x-www-form-urlencoded" -H "Cache-Control: no-cache" "${apiUrl}"newMonitor -d @"${newMonitorConfigFile}" --header "Content-Type: application/json" | jq 2> /dev/null || fatal
+            curl -s -X POST -H "Content-Type: application/json" -H "Cache-Control: no-cache" "${apiUrl}"newMonitor -d @"${newMonitorConfigFile}" --header "Content-Type: application/json" | jq 2> /dev/null || fatal
         elif [[ ${jq} == 'false' ]]; then
-            curl --fail -s -X POST -H "Content-Type: application/x-www-form-urlencoded" -H "Cache-Control: no-cache" "${apiUrl}"newMonitor -d @"${newMonitorConfigFile}" --header "Content-Type: application/json" || fatal
+            curl --fail -s -X POST -H "Content-Type: application/json" -H "Cache-Control: no-cache" "${apiUrl}"newMonitor -d @"${newMonitorConfigFile}" --header "Content-Type: application/json" || fatal
         fi
     elif [[ ${providerName} == 'statuscake' ]]; then
         if [[ ${jq} == 'true' ]]; then
